@@ -1,6 +1,6 @@
 # MasterMoshai Ai
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshot1.png)
 
 ## Project Overview
 
