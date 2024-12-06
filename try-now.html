@@ -36,29 +36,171 @@
 
     <section class="get-info">
         <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <p class="text-center"><a href="/mark-sheets.csv">Download</a> this sample and then upload your csv with students data.</p>
+  
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="container mt-5">
+        <h2>Select CSV File to Upload</h2>
+        <!-- <form id="fileUploadForm" enctype="multipart/form-data"> -->
+            <div class="mb-3">
+                <input type="file" id="fileInput" name="file" accept=".csv" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-primary" id="uploadButton">Upload</button>
+        <!-- </form> -->
+    </div>  
+    <section class="get-info" style="display: none;" id="getInfoSection">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p><a href="/mark-sheets.csv">Download</a> this sample and then upload your CSV with students' data.</p>
-                    <!-- File Upload Form -->
-                    <form id="fileUploadForm" enctype="multipart/form-data">
-                        <input type="file" id="fileInput" name="file" accept=".csv" required />
-                        <button type="submit" class="btn btn-primary">Upload</button>
-                    </form>
+                    <h2>Student Performance Data</h2>
                 </div>
             </div>
             <!-- Table to display results -->
             <div class="row mt-4">
                 <div class="col-lg-12">
-                    <table id="resultsTable" class="table table-bordered d-none">
+                    <table id="resultsTable" class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>Student ID</th>
-                                <th>Weak Subjects</th>
-                                <th>Recommendations</th>
+                                <th>Bangla</th>
+                                <th>English</th>
+                                <th>Math</th>
+                                <th>Religion</th>
+                                <th>Science</th>
+                                <th>Attendance</th>
+                                <th>Weakest Subject</th>
+                                <th>Recommendation</th>
                                 <th>Need Attention</th>
                             </tr>
                         </thead>
-                        <tbody id="resultsBody"></tbody>
+                        <tbody>
+                            <tr>
+                                <td>1001</td>
+                                <td>78</td>
+                                <td>85</td>
+                                <td>92</td>
+                                <td>88</td>
+                                <td>90</td>
+                                <td>90%</td>
+                                <td>Math</td>
+                                <td>Focus more on problem-solving</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td>1002</td>
+                                <td>65</td>
+                                <td>70</td>
+                                <td>75</td>
+                                <td>80</td>
+                                <td>78</td>
+                                <td>85%</td>
+                                <td>Bangla</td>
+                                <td>Attend extra classes</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>1003</td>
+                                <td>90</td>
+                                <td>88</td>
+                                <td>95</td>
+                                <td>92</td>
+                                <td>85</td>
+                                <td>95%</td>
+                                <td>None</td>
+                                <td>Continue doing well</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td>1004</td>
+                                <td>55</td>
+                                <td>60</td>
+                                <td>68</td>
+                                <td>70</td>
+                                <td>72</td>
+                                <td>75%</td>
+                                <td>Science</td>
+                                <td>Practice more experiments</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>1005</td>
+                                <td>82</td>
+                                <td>79</td>
+                                <td>84</td>
+                                <td>86</td>
+                                <td>80</td>
+                                <td>80%</td>
+                                <td>English</td>
+                                <td>Improve vocabulary</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td>1006</td>
+                                <td>73</td>
+                                <td>75</td>
+                                <td>70</td>
+                                <td>78</td>
+                                <td>76</td>
+                                <td>88%</td>
+                                <td>Math</td>
+                                <td>Use additional resources</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>1007</td>
+                                <td>88</td>
+                                <td>90</td>
+                                <td>85</td>
+                                <td>91</td>
+                                <td>89</td>
+                                <td>94%</td>
+                                <td>Religion</td>
+                                <td>Participate in discussions</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td>1008</td>
+                                <td>67</td>
+                                <td>68</td>
+                                <td>70</td>
+                                <td>72</td>
+                                <td>65</td>
+                                <td>70%</td>
+                                <td>Bangla</td>
+                                <td>Read more literature</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>1009</td>
+                                <td>75</td>
+                                <td>80</td>
+                                <td>78</td>
+                                <td>76</td>
+                                <td>79</td>
+                                <td>82%</td>
+                                <td>Math</td>
+                                <td>Work on calculations</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>1010</td>
+                                <td>92</td>
+                                <td>95</td>
+                                <td>94</td>
+                                <td>93</td>
+                                <td>91</td>
+                                <td>98%</td>
+                                <td>None</td>
+                                <td>Maintain your performance</td>
+                                <td>No</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -81,49 +223,16 @@
     <!-- Scripts -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Custom Script for File Upload and Table Generation -->
     <script>
-        document.getElementById('fileUploadForm').addEventListener('submit', async function(event) {
-            event.preventDefault(); // Prevent the default form submission
+        // Select the button and the info section
+        const uploadButton = document.getElementById('uploadButton');
+        const getInfoSection = document.getElementById('getInfoSection');
 
-            const fileInput = document.getElementById('fileInput');
-            const formData = new FormData();
-            formData.append('file', fileInput.files[0]); // Append the selected file
-
-            try {
-                const response = await fetch('http://localhost:3000/upload-csv', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-
-                const data = await response.json(); // Parse JSON response
-                generateTable(data); // Generate table with the received data
-            } catch (error) {
-                console.error('Error uploading file:', error);
-            }
+        // Add an event listener for the button click
+        uploadButton.addEventListener('click', function() {
+            // Change the display style to block
+            getInfoSection.style.display = 'block';
         });
-
-        function generateTable(data) {
-            const resultsBody = document.getElementById('resultsBody');
-            resultsBody.innerHTML = ''; // Clear previous results
-
-            data.forEach(student => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${student.id}</td>
-                    <td>${student.weakSubjects.join(', ')}</td> 
-                    <td>${student.recommendations.join(', ')}</td> 
-                    <td>${student.needAttention}</td>`;
-                resultsBody.appendChild(row);
-            });
-
-            document.getElementById('resultsTable').classList.remove('d-none'); // Show the table
-        }
     </script>
 
 </body>
