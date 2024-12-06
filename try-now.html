@@ -35,14 +35,34 @@
     <!-- ***** Header Area End ***** -->
 
     <section class="get-info">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <p class="text-center"><a href="/mark-sheets.csv">Download</a> this sample and then upload your csv with students data.</p>
-
-          </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p><a href="/mark-sheets.csv">Download</a> this sample and then upload your CSV with students' data.</p>
+                    <!-- File Upload Form -->
+                    <form id="fileUploadForm" enctype="multipart/form-data">
+                        <input type="file" id="fileInput" name="file" accept=".csv" required />
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </form>
+                </div>
+            </div>
+            <!-- Table to display results -->
+            <div class="row mt-4">
+                <div class="col-lg-12">
+                    <table id="resultsTable" class="table table-bordered d-none">
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Weak Subjects</th>
+                                <th>Recommendations</th>
+                                <th>Need Attention</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsBody"></tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
     <!-- ***** Footer Area Start ***** -->
@@ -51,7 +71,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <p class="copyright">Copyright © 2024 MasterMoshai AI. All Rights Reserved.
-                    <br>Our mission is to empower educators and enhance the learning experience for all.</p>
+                    Our mission is to empower educators and enhance the learning experience for all.</p>
                 </div>
             </div>
         </div>  
@@ -61,6 +81,51 @@
     <!-- Scripts -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom Script for File Upload and Table Generation -->
+    <script>
+        document.getElementById('fileUploadForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const fileInput = document.getElementById('fileInput');
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]); // Append the selected file
+
+            try {
+                const response = await fetch('http://localhost:3000/upload-csv', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json(); // Parse JSON response
+                generateTable(data); // Generate table with the received data
+            } catch (error) {
+                console.error('Error uploading file:', error);
+            }
+        });
+
+        function generateTable(data) {
+            const resultsBody = document.getElementById('resultsBody');
+            resultsBody.innerHTML = ''; // Clear previous results
+
+            data.forEach(student => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${student.id}</td>
+                    <td>${student.weakSubjects.join(', ')}</td> 
+                    <td>${student.recommendations.join(', ')}</td> 
+                    <td>${student.needAttention}</td>`;
+                resultsBody.appendChild(row);
+            });
+
+            document.getElementById('resultsTable').classList.remove('d-none'); // Show the table
+        }
+    </script>
+
 </body>
 
 </html>
